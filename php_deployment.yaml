@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php
+  labels:
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: php
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: php
+        tier: backend
+    spec:
+      volumes:
+      - name: dir
+        hostPath:
+          path: /codedrn
+      containers:
+      - name: php
+        image: ramazantufekci/laravel-k8:5.7.1
+        volumeMounts:
+        - name: dir
+          mountPath: /codedrn
+        initContainers:
+        - name: install
+          image: busybox
+          volumeMounts:
+          - name: dir
+            mountPath: /codedrn
+          command:
+          - cp
+          - "-r"
+          - "/var/www"
+          - "/codedrn/app"
