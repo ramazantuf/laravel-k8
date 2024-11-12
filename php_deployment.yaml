@@ -36,4 +36,4 @@ spec:
           - cp
           - "-r"
           - "/var/www"
-          - "/codedrn/; chown www-data:www-data .*;php artisan optimize:clear"
+          - "/codedrn/; chown www-data:www-data * -R;php artisan optimize:clear"
