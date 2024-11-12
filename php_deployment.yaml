@@ -40,4 +40,4 @@ spec:
           command:
           - chown
           - "www-data:www-data"
-          - "*"
+          - ".*"
