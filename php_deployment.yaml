@@ -37,3 +37,7 @@ spec:
           - "-r"
           - "/var/www"
           - "/codedrn/"
+          command:
+          - chown
+          - "www-data:www-data"
+          - "*"
